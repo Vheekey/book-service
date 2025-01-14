@@ -9,13 +9,12 @@ A Spring Boot microservice for managing library books. Part of a library managem
 - Java 17
 
 ## Upcoming Features
-- Kafka integration for event publishing
 - JWT authentication
 
 ## API Endpoints
 
 ### Books
-- `POST /api/books` - Add a new book
+- `POST /api/books` - Add a new book and publishes event to kafka
   - Required fields: title, author, description, category, location, isbn, type
   - Returns: Book details with auto-generated ID and timestamps
   - Sample request
