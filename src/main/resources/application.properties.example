@@ -13,3 +13,5 @@ logging.pattern.console=%d{yyyy-MM-dd HH:mm:ss} - %msg%n
 logging.pattern.file=%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
 spring.kafka.bootstrap-servers=localhost:9092
 app.kafka.producer.topic=book_created
+jwt.secret=
+api.key=
