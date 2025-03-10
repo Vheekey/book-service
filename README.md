@@ -31,6 +31,56 @@ A Spring Boot microservice for managing library books. Part of a library managem
 }
 ```
 
+- `POST /api/books/search/{keyword}` - Wild card search on books
+  - Returns: Paged Books previously stored in the db
+  - Sample response
+```
+{
+    "content": [
+        {
+            "id": "2fca0f55-7ea5-41ce-af0b-b91802baed37",
+            "title": "Spring Boot in Action",
+            "author": "Craig Walls",
+            "description": "A comprehensive guide to Spring Boot",
+            "category": "FICTION",
+            "location": "Shelf-A1",
+            "isbn": "900904",
+            "status": "AVAILABLE",
+            "type": "BOOK",
+            "fine": 5,
+            "createdAt": "2025-01-14T10:24:45.829",
+            "updatedAt": "2025-01-14T10:24:45.847"
+        }
+    ],
+    "pageable": {
+        "pageNumber": 0,
+        "pageSize": 10,
+        "sort": {
+            "empty": true,
+            "unsorted": true,
+            "sorted": false
+        },
+        "offset": 0,
+        "paged": true,
+        "unpaged": false
+    },
+    "last": false,
+    "totalPages": 2,
+    "totalElements": 18,
+    "first": true,
+    "size": 10,
+    "number": 0,
+    "sort": {
+        "empty": true,
+        "unsorted": true,
+        "sorted": false
+    },
+    "numberOfElements": 10,
+    "empty": false
+}
+```
+
+
 ## Getting Started
 
 1. Ensure MongoDB is running locally
