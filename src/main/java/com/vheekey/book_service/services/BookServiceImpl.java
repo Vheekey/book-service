@@ -7,6 +7,8 @@ import com.vheekey.book_service.requests.BookRequest;
 import com.vheekey.book_service.responses.BookResponse;
 import com.vheekey.book_service.services.interfaces.BookService;
 import com.vheekey.book_service.services.interfaces.KafkaService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -33,5 +35,11 @@ public class BookServiceImpl implements BookService {
         this.kafkaService.send(book);
 
         return this.bookMapper.toResponse(book);
+    }
+
+    @Override
+    public Page<BookResponse> searchBookWildCard(String keyword, Pageable pageable) {
+        Page<Book> books = bookRepository.searchBooks(keyword, pageable);
+        return books.map(bookMapper::toResponse);
     }
 }
