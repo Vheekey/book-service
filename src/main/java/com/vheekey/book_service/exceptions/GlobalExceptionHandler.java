@@ -2,6 +2,7 @@ package com.vheekey.book_service.exceptions;
 
 import com.vheekey.book_service.common.ApiError;
 import jakarta.validation.ConstraintViolationException;
+import org.apache.kafka.common.errors.ResourceNotFoundException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -40,6 +41,11 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ApiError> handleMethodArgumentNotValid(MethodArgumentNotValidException exception) {
         return getHandler(MethodArgumentNotValidException.class).handle(exception);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<ApiError> handleResourceNotFound(ResourceNotFoundException exception) {
+        return getHandler(ResourceNotFoundException.class).handle(exception);
     }
 
     @SuppressWarnings("unchecked")

@@ -21,7 +21,9 @@ public @interface ValidBookType {
     class Validator implements ConstraintValidator<ValidBookType, BookType> {
         @Override
         public boolean isValid(BookType value, ConstraintValidatorContext context) {
-            return value != null;
+            if (value == null) return true;
+
+            return value.equals(BookType.valueOf(value.name().toUpperCase()));
         }
     }
 }

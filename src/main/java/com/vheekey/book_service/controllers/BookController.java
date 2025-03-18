@@ -1,6 +1,7 @@
 package com.vheekey.book_service.controllers;
 
 import com.vheekey.book_service.requests.BookRequest;
+import com.vheekey.book_service.requests.UpdateBookRequest;
 import com.vheekey.book_service.responses.BookResponse;
 import com.vheekey.book_service.services.interfaces.BookService;
 import jakarta.validation.Valid;
@@ -38,5 +39,12 @@ public class BookController {
         Page<BookResponse> bookResponse = bookService.searchBookWildCard(keyword, pageable);
 
         return ResponseEntity.ok(bookResponse);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<BookResponse> update(@PathVariable String id, @Valid @RequestBody UpdateBookRequest request) {
+        BookResponse response = bookService.updateBook(id, request);
+
+        return ResponseEntity.ok(response);
     }
 }
