@@ -26,7 +26,7 @@ public @interface UniqueValue {
     Class<?> collection();
 
     @Component
-    public class UniqueValueValidator implements ConstraintValidator<UniqueValue, String> {
+    class UniqueValueValidator implements ConstraintValidator<UniqueValue, String> {
 
         private final MongoTemplate mongoTemplate;
         private String field;
@@ -44,8 +44,8 @@ public @interface UniqueValue {
 
         @Override
         public boolean isValid(String fieldValue, ConstraintValidatorContext context) {
-            if (fieldValue == null || fieldValue.isEmpty() || fieldValue.isBlank()) {
-                return false;
+            if (fieldValue == null) {
+                return true;
             }
 
             String fieldName = field.isEmpty() ? context.getDefaultConstraintMessageTemplate() : field;

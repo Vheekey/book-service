@@ -3,6 +3,7 @@ package com.vheekey.book_service.common;
 import com.vheekey.book_service.documents.Book;
 import com.vheekey.book_service.enums.BookStatus;
 import com.vheekey.book_service.requests.BookRequest;
+import com.vheekey.book_service.requests.UpdateBookRequest;
 import com.vheekey.book_service.responses.BookResponse;
 import org.springframework.stereotype.Component;
 
@@ -44,14 +45,39 @@ public class BookMapper {
         return book;
     }
 
-    public void updateBook(Book book, BookRequest request) {
-        book.setTitle(request.getTitle());
-        book.setAuthor(request.getAuthor());
-        book.setDescription(request.getDescription());
-        book.setLocation(request.getLocation());
-        book.setType(request.getBookType());
-        book.setCategory(request.getCategory());
-        book.setIsbn(request.getIsbn());
-        book.setFine(BigDecimal.valueOf(request.getFine()));
+    public Book updateBook(Book book, UpdateBookRequest request) {
+        if (request.getTitle() != null) {
+            book.setTitle(request.getTitle());
+        }
+
+        if (request.getAuthor() != null) {
+            book.setAuthor(request.getAuthor());
+        }
+
+        if (request.getDescription() != null) {
+            book.setDescription(request.getDescription());
+        }
+
+        if (request.getLocation() != null) {
+            book.setLocation(request.getLocation());
+        }
+
+        if (request.getBookType() != null) {
+            book.setType(request.getBookType());
+        }
+
+        if (request.getCategory() != null) {
+            book.setCategory(request.getCategory());
+        }
+
+        if (request.getIsbn() != null) {
+            book.setIsbn(request.getIsbn());
+        }
+
+        if (request.getFine() != null && request.getFine() > 0) {
+            book.setFine(BigDecimal.valueOf(request.getFine()));
+        }
+
+        return book;
     }
 }
