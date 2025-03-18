@@ -31,7 +31,7 @@ A Spring Boot microservice for managing library books. Part of a library managem
 }
 ```
 
-- `POST /api/books/search/{keyword}` - Wild card search on books
+- `GET /api/books/search/{keyword}` - Wild card search on books
   - Returns: Paged Books previously stored in the db
   - Sample response
 ```
@@ -77,6 +77,14 @@ A Spring Boot microservice for managing library books. Part of a library managem
     },
     "numberOfElements": 10,
     "empty": false
+}
+```
+- `PUT /api/books/{id}` - Updates a book by id
+  - Returns: Updated book instace
+  - Sample request
+```
+{
+    "author": "Craig Wallis",
 }
 ```
 
