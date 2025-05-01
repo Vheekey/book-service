@@ -21,7 +21,8 @@ public class KafkaServiceImpl implements KafkaService {
                 book.getTitle(),
                 book.getAuthor(),
                 book.getIsbn(),
-                book.getStatus()
+                book.getStatus(),
+                book.getCreatedAt()
         );
 
         return this.kafkaProducerService.publishMessage(bookCreated);
